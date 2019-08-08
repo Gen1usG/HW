@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var div1 = document.createElement("div")
+        var dragging = false
+        var lastX
+        var lastY
+        document.body.appendChild(div1)
+
+        document.onmousemove = function (e) {
+            if (dragging) {
+                // 用极限的方式实现一个极小的移动距离
+                var delayX = e.clientX - lastX
+                var delayY = e.clientY - lastY
+                var top = parseInt(div1.style.top) || 0
+                var left = parseInt(div1.style.left) || 0
+                // 原始位置+移动的距离 = 移动的位置
+                var resultX = delayX + left
+                var resultY = delayY + top
+                // 限制不出左边框
+                if (resultX < 0) {
+                    resultX = 0
+                }
+                div1.style.top = resultY + 'px'
+                div1.style.left = resultX + 'px'
+                lastX = e.clientX
+                lastY = e.clientY
+            }
+
+        }
+
+        div1.onmousedown = function (e) {
+            dragging = true
+            // 点击时即时获取当前鼠标位置
+            lastX = e.clientX
+            lastY = e.clientY
+        }
+
+        div1.onmouseup = function () {
+            dragging = false
+        }
+    </script>
+</body>
+
+</html>
