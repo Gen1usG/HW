@@ -3,10 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        img {
+            max-width: 100%;
+        }
+
         .float {
             float: left;
         }
@@ -17,7 +22,7 @@
             clear: both;
         }
 
-        li {
+        ul li {
             width: 500px;
             list-style: none;
         }
@@ -25,10 +30,14 @@
 </head>
 
 <body>
+    <ol>
+        <li><a href="#personalProfile">个人简介</a></li>
+        <li><a href="#poem">诗词</a></li>
+    </ol>
     <h1>苏轼</h1>
     <main>
         <section>
-            <h2>个人简介</h2>
+            <h2 id="personalProfile">个人简介</h2>
             <div class="clearfix">
                 <img src="./sushi.jpg" alt="这里应该有个苏轼" height="300" class="float">
                 <div style="width:300px;margin-left:10px" class="float">
@@ -39,7 +48,7 @@
             </div>
         </section>
         <section>
-            <h2>著名诗词</h2>
+            <h2 id="poem">著名诗词</h2>
             <ul>
                 <li>
                     <h3 style="margin:0 auto;max-width:100px">定风波</h3>
