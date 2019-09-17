@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id='canvas'></div>
+</body>
+<script>
+    let painting = false
+
+    canvas.onmousedown = () => {
+        painting = true
+    }
+
+    canvas.onmouseup = () => {
+        painting = false
+    }
+    canvas.onmousemove = (e) => {
+        if (painting) {
+            let mydiv = document.createElement('div')
+            mydiv.style.width = '6px'
+            mydiv.style.height = '6px'
+            mydiv.style.backgroundColor = 'darkorange'
+            mydiv.style.position = 'absolute'
+            mydiv.style.transform = 'translateX(' + (e.clientX - 3) + 'px' + ')' + 'translateY(' + (e.clientY - 3) + 'px' + ')'
+            mydiv.style.borderRadius = '50%'
+            canvas.appendChild(mydiv)
+        }
+    }
+</script>
+
+</html>

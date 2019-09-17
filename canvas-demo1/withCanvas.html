@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #myCanvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width=myVw height=myVh></canvas>
+</body>
+<script>
+    // 设置canvas画板大小
+    myCanvas.width = document.documentElement.clientWidth
+    myCanvas.height = document.documentElement.clientHeight
+    console.log(document.documentElement)
+    // getContext获取渲染上下文和绘画功能，设置画板的一些样式
+    let ctx = myCanvas.getContext('2d')
+    ctx.lineWidth = 10
+    ctx.lineCap = 'round'
+    let painting = false
+
+
+    // 检测通过touch事件检测移动端和PC端
+    let isSupportTouch = "ontouchend" in document
+
+    // 存储上一个点
+    let last
+
+    //判断终端，及两种终端的划线
+    if (!isSupportTouch) {
+        myCanvas.onmousedown = (e) => {
+            painting = true
+            last = [e.clientX, e.clientY]
+        }
+
+        myCanvas.onmouseup = () => {
+            painting = false
+        }
+
+        myCanvas.onmousemove = (e) => {
+            if (painting) {
+                ctx.beginPath();
+                ctx.moveTo(last[0], last[1]);
+                ctx.lineTo(e.clientX, e.clientY);
+                ctx.stroke();
+                last = [e.clientX, e.clientY]
+            }
+
+        }
+    } else {
+        myCanvas.ontouchstart = (e) => {
+            last = [e.touches[0].clientX, e.touches[0].clientY]
+        }
+
+        myCanvas.ontouchmove = (e) => {
+            ctx.beginPath()
+            ctx.moveTo(last[0], last[1])
+            ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY)
+            ctx.stroke()
+            last = [e.touches[0].clientX, e.touches[0].clientY]
+        }
+    }
+
+</script>
+
+</html>
