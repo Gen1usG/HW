@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const creatList = value => {
+            return {
+                data: value,
+                next: null
+            }
+        }
+
+        const append = (list, value) => {
+            let node = creatList(value)
+            let x = list
+            while (x.next) {
+                x = x.next
+            }
+            x.next = node
+            return node
+        }
+
+        const remove = (list, node) => {
+            let x = list
+            while (x.next !== node) {
+                x = x.next
+            }
+            x.next = node.next
+        }
+
+        const traval = (list, fn) => {
+            let x = list
+            while (x) {
+                fn(x)
+                x = x.next
+            }
+        }
+
+        let root = creatList('root')
+        let node1 = append(root, 'imnode1')
+        let node2 = append(root, 'imnode2')
+        let node3 = append(root, 'imnode3')
+        remove(root, node2)
+        let node4 = append(root, 'imnode4')
+        traval(root, (a) => {
+            console.log(a.data)
+        })
+        console.log(root);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function quickSort(numbers) {
+            if (numbers.length <= 1) { return numbers }
+            let pivodIndex = Math.floor(numbers.length / 2)
+            let pivod = numbers.splice(pivodIndex, 1)[0]
+            let left = []
+            let right = []
+            for (let i = 0; i < numbers.length; i++) {
+                pivod > numbers[i] ? left.push(numbers[i]) : right.push(numbers[i])
+            }
+            return quickSort(left).concat([pivod].concat(quickSort(right)))
+        }
+        console.log(quickSort([12, 5, -1, 6, 47, 8, 7, 21, 48, 79, 97, 24, 87]))
+    </script>
+</body>
+
+</html>

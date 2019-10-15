@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // [12,5,47,46,8,7,97,21,48,79,24,87]
+        function mergeSort(arr1, arr2) {
+            let length = arr1.length + arr2.length
+            let newArr = []
+            let arr1Son = arr1.splice(0, 1)[0]
+            let arr2Son = arr2.splice(0, 1)[0]
+            for (let i = 0; i < length; i++) {
+                if (arr1Son <= arr2Son) {
+                    newArr.push(arr1Son)
+                    arr1Son = arr1[0] ? arr1.splice(0, 1)[0] : Infinity
+                } else {
+                    newArr.push(arr2Son)
+                    arr2Son = arr2[0] ? arr2.splice(0, 1)[0] : Infinity
+                }
+            }
+            return newArr
+        }
+
+        function merge(numbers) {
+            if (numbers.length <= 1) { return numbers }
+            let mid = Math.floor(numbers.length / 2)
+            let left = numbers.slice(0, mid)
+            let right = numbers.slice(mid)
+            return mergeSort(merge(left), merge(right))
+        }
+
+        console.log(merge([12, 5, 47, 46, 8, 7, 97, 21, 48, 79, 24, 87]))
+        // console.log(mergeSort([1], [3]))
+    </script>
+</body>
+
+</html>

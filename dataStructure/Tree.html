@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const creat = value => {
+            return {
+                data: value,
+                children: null,
+                parent: null
+            }
+        }
+        const creatTree = value => {
+            return creat(value)
+        }
+
+        const creatNode = value => {
+            return creat(value)
+        }
+
+        const addChild = (parent, node) => {
+            if (parent.children) {
+                node.parent = parent
+                parent.children.push.call(parent.children, node)
+            } else {
+                node.parent = parent
+                parent.children = []
+                parent.children.push.call(parent.children, node)
+            }
+        }
+
+        const removeChild = (node) => {
+            let siblings = node.parent.children
+            for (let i = 0; i < siblings.length; i++) {
+                if (siblings[i] === node) {
+                    siblings.splice(i, 1)
+                }
+            }
+        }
+
+        const traval = (tree, fn) => {
+            fn(tree)
+            if (tree.children) {
+                for (let i = 0; i < tree.children.length; i++) {
+                    traval(tree.children[i], fn)
+                }
+            }
+        }
+
+        const tree = creatTree('tree')
+        const node1 = creatNode('node1')
+        const node2 = creatNode('node2')
+        const node3 = creatNode('node3')
+        addChild(tree, node1)
+        addChild(tree, node2)
+        addChild(tree, node3)
+        addChild(node2, 201)
+        addChild(node2, 202)
+        addChild(node2, 203)
+        removeChild(node2)
+        traval(tree, (x) => {
+            console.log(x.data)
+        })
+        console.log(tree)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let countSort = numbers => {
+            let countRoom = {}
+            let result = []
+            // 哈希表key会自动排好序...
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i] in countRoom ? countRoom[numbers[i]]++ : countRoom[numbers[i]] = 1
+            }
+            for (keys in countRoom) {
+                for (let i = 1; i <= countRoom[keys]; i++) {
+                    result.push(parseInt(keys))
+                }
+            }
+            return result
+        }
+        console.log(countSort([12, 5, 47, 47, 46, 8, 7, 97, 21, 47, 48, 79, 24, 8747, 47]))
+
+    </script>
+</body>
+
+</html>
