@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Application</title>
+    <link href="css/roboto.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div id='header-nav'>
+            <nav>
+                <a href="./index.html">homepage</a>
+                <a href="./second.html">history</a>
+                <a href="./third.html">videos</a>
+                <a href="./activity.html">farm</a>
+                <a href="./application.html">account</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <fieldset class='app-fieldset'>
+            <legend>application</legend>
+            <form action="">
+                <div class="form-item">
+                    <label><span>FirstName:</span><input type="text" name='firstname' placeholder="First Name"
+                            autocomplete="off"></label>
+                </div>
+                <div class="form-item">
+                    <label><span>LirstName:</span><input type="text" name='lirstname' placeholder="Last Name"
+                            autocomplete="off"></label>
+                </div>
+                <div class="form-item">
+                    <div class='gender-male'>
+                        <input type="radio" name='gender' value='male' checked id='male'>
+                        <label for="male">Male:</label>
+                    </div>
+                    <div class="gender-female">
+                        <input type="radio" name='gender' value='female' id='female'>
+                        <label for="female">Female:</label>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label>
+                        <span>Age:</span>
+                        <select name="age">
+                            <option value="18"> &gt;18 </option>
+                            <option value="14to18">18~14</option>
+                            <option value="14">&lt;14</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-item">
+                    <label><span>Address:</span><input type="text" name='adress' placeholder="Address"
+                            autocomplete="off"></label>
+                </div>
+                <div class="form-item">
+                    <label><span>E-mail:</span><input type="text" name='adress' placeholder="E-mail"
+                            autocomplete="off"></label>
+                </div>
+                <div class="form-item">
+                    <label><span>Phone:</span><input type="text" name='adress' placeholder="Phone"
+                            autocomplete="off"></label>
+                </div>
+                <div class="form-item">
+                    <label><span>Education:</span><input type="text" name='adress' placeholder="Education"
+                            autocomplete="off"></label>
+                </div>
+                <button type="submit">SUBMIT</button>
+            </form>
+        </fieldset>
+    </main>
+
+    <footer id='footer'>
+        <div class='footer-icon'>
+            <a href="#"><img src="icons/Facebook.png" alt=""></a>
+        </div>
+        <div class='footer-icon'>
+            <a href="#"><img src="icons/github.png" alt=""></a>
+        </div>
+        <div class='footer-icon'>
+            <a href="#"><img src="icons/twitter.png" alt=""></a>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
